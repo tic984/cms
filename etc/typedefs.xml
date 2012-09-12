@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typedefs>
+	<active formtype="select"  phptype="boolean">
+		<database length="1" default="Y">char</database>
+	</active>
+	<string formtype="text"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</string>
+	<date formtype="datepicker"  phptype="date">
+		<database length="" default="">date</database>
+	</date>
+	<datetime formtype="text"  phptype="string">
+		<database length="" default="">datetime</database>
+	</datetime>
+	<radio formtype="radio"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</radio>
+	<text formtype="textarea"  phptype="string">
+		<database length="" default="">text</database>
+	</text>
+	<link formtype="text"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</link>
+	<image formtype="file"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</image>
+	<file formtype="file"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</file>
+        <uploadify formtype="uploadify"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</uploadify>
+	<document formtype="file"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</document>
+	<selectyesno formtype="select"  phptype="boolean">
+		<database length="1" default="">char</database>
+	</selectyesno>
+	<select formtype="select"  phptype="text">
+		<database length="255" default="">varchar</database>
+	</select>
+	<radioyesno formtype="radio"  phptype="boolean">
+		<database length="1" default="">char</database>
+	</radioyesno>
+	<hidden formtype="hidden"  phptype="string">
+		<database length="255" default="">varchar</database>
+	</hidden>
+	<checkbox formtype="checkbox"  phptype="boolean">
+		<database length="1" default="">char</database>
+	</checkbox>
+	<slider formtype="slider"  phptype="int">
+		<database length="11" default="">int</database>
+	</slider>
+	<spinner formtype="spinner"  phptype="int">
+		<database length="11" default="">int</database>
+	</spinner>
+	<ckeditor formtype="ckeditor"  phptype="string">
+		<database length="" default="">text</database>
+	</ckeditor>
+</typedefs>

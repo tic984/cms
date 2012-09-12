@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reldefs>
+    <club_city relating="Clubs/Club" related="Clubs/City" reltype="1,n" model="intable">
+        <relating sortable="S" render="select" display="form" mandatory="Y">
+            <foreign_keys>
+                <key>name</key>
+            </foreign_keys>
+        </relating>
+        <related sortable="S" render="select" display="form" mandatory="Y">
+            <foreign_keys>
+                <key>name</key>
+            </foreign_keys>
+        </related>
+    </club_city>
+    <!--
+    <club_gallery relating="Clubs/Club" related="Clubs/City" reltype="1,n" model="intable">
+        <relating sortable="S" render="select" display="form" mandatory="Y">
+            <foreign_keys>
+                <key>name</key>
+            </foreign_keys>
+        </relating>
+        <related sortable="S" render="select" display="form" mandatory="Y">
+            <foreign_keys>
+                <key>name</key>
+            </foreign_keys>
+        </related>
+    </club_gallery>
+    <club_courses relating="Clubs/Club" related="Clubs/City" reltype="1,n" model="intable">
+        <relating sortable="S" render="select" display="form" mandatory="Y">
+            <foreign_keys>
+                <key>name</key>
+            </foreign_keys>
+        </relating>
+        <related sortable="S" render="select" display="form" mandatory="Y">
+            <foreign_keys>
+                <key>name</key>
+            </foreign_keys>
+        </related>
+    </club_courses>
+    -->
+</reldefs>

@@ -1,0 +1,41 @@
+<?php echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <?php echo $this->headTitle() . PHP_EOL; ?>
+        <?php echo $this->headLink()->appendStylesheet($this->baseUrl('/css/admin/style.css')) . PHP_EOL; ?>
+        <script type="text/javascript" src="/js/admin/WeDo/WeDo.js"></script>
+        <!-- jQuery AND jQueryUI -->
+        <?php echo $this->jQuery() . PHP_EOL; ?>
+        <!-- other scripts -->
+        
+        <?php echo $this->headScript() . PHP_EOL; ?>
+    </head>
+    <body>
+
+        <!--              
+                HEAD
+        --> 
+       <?php echo $this->render("header.phtml") ?>
+
+
+        <!--            
+                SIDEBAR
+        --> 
+        <div id="sidebar">
+            <?php
+            echo $this->navigation()->menu()->renderMenu(null, array('ulClass' => ''));
+            ?>
+        </div>
+        
+        <!-- CONTENT -->
+        <div id="content" class="white">
+            <?php echo $this->layout()->content ?>
+        </div>
+        
+        <!--  CONTENT --> 
+
+
+
+    </body>
+</html>

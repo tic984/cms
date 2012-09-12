@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+    <environments>
+        <test>
+            <frontend_url><![CDATA[http://fit2me.local/]]>
+            </frontend_url>
+            <backend_url><![CDATA[http://fit2me.local/admin/]]>
+            </backend_url>
+            <connections>
+                <connection type="database" adapter="mysql" connection_name='default' default='Y' persistent='Y'>
+                    <uri>localhost/wedo_cms</uri>
+                    <login>wedo_cms</login>
+                    <password>wedo_cms</password>
+                    <params>
+                        <upon_connection><![CDATA[SET NAMES 'utf8']]>
+                        </upon_connection>
+                    </params>
+                </connection>
+                <connection type="database" adapter="mysql" connection_name='other_connection' default='N' persistent='N'>
+                    <uri>localhost/Devel2</uri>
+                    <login>Devel2</login>
+                    <password>Devel2</password>
+                    <params>
+                        <param name="upon_connection"><![CDATA[SET NAMES 'utf8']]>
+                        </param>
+                    </params>
+                </connection>
+                <connection type="database" adapter="mongo" connection_name='mongo' default='N' persistent='Y'>
+                    <uri>flame.mongohq.com:27069/fit2me</uri>
+                    <login>fit2me</login>
+                    <password>fit2me</password>
+                    <params/>
+                </connection>
+                <connection type="email" adapter="imap" connection_name='my_gmail' default='N' persistent='N'>
+                    <host>imap.gmail.com</host>
+                    <port>993</port>
+                    <login>alessio.dezotti@gmail.com</login>
+                    <password>ma68mano</password>
+                    <ssl>true</ssl>
+                </connection>
+            </connections>
+            <resource>
+                <resource type="email">
+                    <host>localhost</host>
+                    <smtp ismstp="Y">
+                        <user></user>
+                        <password></password>
+                    </smtp>
+                </resource>
+            </resource>
+        </test>
+        <production>
+            <frontend_url><![CDATA[http://localhost/Devel/]]>
+            </frontend_url>
+            <backend_url><![CDATA[http://localhost/Devel/admin]]>
+            </backend_url>
+            <connections>
+                <connection connectionType="database" connection_name='app_database' default='Y' lazy='N'>
+                    <uri>localhost/Devel</uri>
+                    <login>Devel</login>
+                    <password>Devel</password>
+                    <params>
+                        <param name="db_type">mysql</param>
+                        <param name="upon_connection"><![CDATA[SET NAMES 'utf8']]>
+                        </param>
+                    </params>
+                </connection>
+                <connection connectionType="database" connection_name='other_connection' default='N' lazy='N'>
+                    <uri>localhost/Magento</uri>
+                    <login>Magento</login>
+                    <password>Mage</password>
+                    <params>
+                        <param name="db_type">mysql</param>
+                        <param name="upon_connection"><![CDATA[SET NAMES 'utf8']]>
+                        </param>
+                    </params>
+                </connection>
+                <connection connectionType="email" connection_name='app_emailer'
+					default='Y' lazy='N'>
+                    <uri>localhost</uri>
+                    <login></login>
+                    <password></password>
+                    <params>
+                        <param name="isSmtp">N</param>
+                    </params>
+                </connection>
+            </connections>
+            <email>
+                <connection name='main' default='Y'>
+                    <host>localhost</host>
+                    <isSmtp>N</isSmtp>
+                    <username></username>
+                    <password></password>
+                </connection>
+            </email>
+        </production>
+    </environments>
+    <config>
+        <environment>test</environment>
+        <runlevels>
+            <frontend>
+                <includes />
+                <defines>
+                    <define varname="PROVA"><![CDATA[se mi vedi, ha funzionato!]]>
+                    </define>
+                </defines>
+                <autoload_pool>
+                    <dir><![CDATA[code/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/helpers/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/eavObjects/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/foundationObjects/]]>
+                    </dir>
+                </autoload_pool>
+                <include_path />
+                <params>
+                    <group name="session">
+                        <param name="use_session"><![CDATA[true]]>
+                        </param>
+                        <param name="session_location"><![CDATA[filesystem]]>
+                        </param>
+                    </group>
+                    <group name="header">
+                        <param name="content-type"><![CDATA[text/html; charset="UTF-8"]]>
+                        </param>
+                    </group>
+                </params>
+            </frontend>
+            <backend>
+                <includes/>
+                <defines>
+                    <define varname="PROVA"><![CDATA[se mi vedi, ha funzionato!]]>
+                    </define>
+                </defines>
+                <autoload_pool>
+                    <dir><![CDATA[code/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/helpers/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/eavObjects/]]>
+                    </dir>
+                    <dir><![CDATA[code/core/foundationObjects/]]>
+                    </dir>
+                </autoload_pool>
+                <include_path />
+                <params>
+                    <group name="session">
+                        <param name="use_session"><![CDATA[true]]>
+                        </param>
+                        <param name="session_location"><![CDATA[filesystem]]>
+                        </param>
+                    </group>
+                    <group name="header">
+                        <param name="content-type"><![CDATA[text/html; charset="UTF-8"]]>
+                        </param>
+                    </group>
+                </params>
+            </backend>
+        </runlevels>
+    </config>
+    <modules />
+    <plugins>
+        <plugins></plugins>
+    </plugins>
+</application>

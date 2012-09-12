@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+    <nav>
+        <app>
+            <label>System</label>
+            <uri>#</uri>    
+            <pages>
+                <profile>
+                    <label>Stats</label>
+                    <controller>stats</controller>
+                    <action>dash</action>
+                </profile>
+                <users>
+                    <label>Admins</label>
+                    <controller>users</controller>
+                    <action>list</action>
+                </users> 
+                <problems>
+                    <label>Report a problem</label>
+                    <controller>reports</controller>
+                    <action>list</action>
+                </problems>
+                <requests>
+                    <label>Incoming Emails</label>
+                    <controller>requests</controller>
+                    <action>list</action>
+                </requests> 
+            </pages>
+            
+        </app>
+    </nav>
+</configdata>
