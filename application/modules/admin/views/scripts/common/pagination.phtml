@@ -1,0 +1,17 @@
+<?php if($this->paginator->hasPages):  ?>
+    <div class="pagination">
+        <?php if($this->paginator->curPage >1) : ?>
+            <a href="<?php echo $this->paginator->previous() ?>" class="prev">&laquo;</a>
+        <?php endif; ?>
+        <?php 
+            for($i = 1; $i <= $this->paginator->numPages; $i++)
+            {
+                $class= ($i== $this->paginator->curPage) ? 'class="current"' : '';
+                echo sprintf('<a href="%s" %s>%d</a>', $this->paginator->getLink($i), $class, $i);
+            } 
+        ?>
+        <?php if($this->paginator->curPage < $this->paginator->numPages) : ?>
+            <a href="<?php echo $this->paginator->next() ?>" class="prev">&raquo;</a>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

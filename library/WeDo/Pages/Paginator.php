@@ -12,16 +12,26 @@
  */
 class WeDo_Pages_Paginator {
     
-    public $curpage;
+    public $curPage;
     public $itemsPerPage;
     public $itemsCount;
     public $numPages;
     public $hasPages;
     public $start;
+    public $params;
+    public $baseUri;
+    
+    
+    const REQUEST_PARAM_PAG = 'pag';
+    const REQUEST_PARAM_ITEMS_PER_PAGE = 'ipp';
+    
+    const DEFAULT_ITEMS_PER_PAGE = 15;
     
     public function __construct(Zend_Controller_Request_Abstract &$request) {
-       $this->curPage = $request->getParam('pag', 1);
-       $this->itemsPerPage = 30;
+       $this->curPage = $request->getParam(self::REQUEST_PARAM_PAG, 1);
+       $this->itemsPerPage = $request->getParam(self::REQUEST_PARAM_ITEMS_PER_PAGE, self::DEFAULT_ITEMS_PER_PAGE);
+       $this->params = $request->getParams(); 
+       $this->baseUri = sprintf("/%s/%s/%s", $this->params['module'], $this->params['controller'], $this->params['action']);
        $this->itemsCount = 0;
        $this->numPages = 1;
        $this->hasPages = false;
@@ -80,7 +90,40 @@ class WeDo_Pages_Paginator {
         $this->start = ($this->getCurpage() - 1) * $this->getItemsPerPage();
         return $this;      
     }
-
+    
+    public function getLink($pos)
+    {
+        $link = array($this->baseUri);
+        
+        foreach($this->params as $k => $v)
+        {
+            switch($k)
+            {
+                case 'module':
+                case 'controller':
+                case 'action':
+                    continue;
+                    break;
+                case self::REQUEST_PARAM_PAG:
+                    $link[] = sprintf("%s/%s", self::REQUEST_PARAM_PAG, $pos);
+                    break;
+                default:
+                    $link[] = sprintf("%s/%s", $k, $v);
+                    break;
+            }
+        }   
+        return implode("/", $link);
+    }
+    
+    public function previous()
+    {
+        return $this->getLink($this->getCurPage() -1 );
+    }
+    
+    public function next()
+    {
+        return $this->getLink($this->getCurPage() +1 );
+    }
 }
 
 ?>

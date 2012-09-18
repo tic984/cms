@@ -18,7 +18,7 @@ class Admin_UsersController extends Zend_Controller_Action
         try {
             $mapper = new Admin_Model_UserMapper();
             $paginator = new WeDo_Pages_Paginator($this->getRequest());
-            $paginator->setItemsPerPage(1)
+            $paginator 
                     ->setItemsCount($mapper->count())
                     ->prepare();
             
@@ -43,7 +43,6 @@ class Admin_UsersController extends Zend_Controller_Action
                 if ($form->isValid($request->getPost()))
                 {
                     $user = new Application_Model_User($form->getValues());
-
                     $user->save();
                     $this->setNotif('success', 'Success', 'Operazione completata con successo');
                 } else
