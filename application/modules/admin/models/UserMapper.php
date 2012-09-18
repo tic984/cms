@@ -70,7 +70,8 @@ class Admin_Model_UserMapper
                   ->setSalt($row->salt)
                     ->setRole($row->role)
                 -> setDate_created($row->date_created)
-                ->setGid($row->gid);
+                ->setGid($row->gid)
+                    ->setId($row->id);
             $entries[] = $entry;
         }
         return $entries;

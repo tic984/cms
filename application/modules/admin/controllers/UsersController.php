@@ -17,14 +17,16 @@ class Admin_UsersController extends Zend_Controller_Action
     {
         try {
             $mapper = new Admin_Model_UserMapper();
-            $paginator = new WeDo_Pages_Paginator($this->getRequest());
-            $paginator 
+            $this->view->currenPageName = 'Utenti ';
+            $this->view->paginator = new WeDo_Pages_Paginator($this->getRequest());
+            $this->view->actions = new WeDo_Pages_ListActions($this->getRequest());
+            $this->view->actions
+                    ->addAction('disable', "Disattiva")
+                    ->addAction('enable', "Attiva");
+            $this->view->paginator 
                     ->setItemsCount($mapper->count())
                     ->prepare();
-            
-            $this->view->entries = $mapper->fetchAll($paginator->getStart(), $paginator->getItemsPerPage());
-            $this->view->paginator = $paginator;
-            $this->view->currenPageName = 'Utenti ';
+            $this->view->entries = $mapper->fetchAll($this->view->paginator->getStart(), $this->view->paginator->getItemsPerPage());
         } catch (Exception $exc) {
             throw $exc;
         }

@@ -10,17 +10,14 @@
  *
  * @author Ale
  */
-class WeDo_Pages_Paginator {
+class WeDo_Pages_Paginator extends WeDo_Pages_ContextAwareItem {
     
     public $curPage;
     public $itemsPerPage;
     public $itemsCount;
     public $numPages;
     public $hasPages;
-    public $start;
-    public $params;
-    public $baseUri;
-    
+    public $start;  
     
     const REQUEST_PARAM_PAG = 'pag';
     const REQUEST_PARAM_ITEMS_PER_PAGE = 'ipp';
@@ -28,10 +25,9 @@ class WeDo_Pages_Paginator {
     const DEFAULT_ITEMS_PER_PAGE = 15;
     
     public function __construct(Zend_Controller_Request_Abstract &$request) {
+       parent::__construct($request);
        $this->curPage = $request->getParam(self::REQUEST_PARAM_PAG, 1);
        $this->itemsPerPage = $request->getParam(self::REQUEST_PARAM_ITEMS_PER_PAGE, self::DEFAULT_ITEMS_PER_PAGE);
-       $this->params = $request->getParams(); 
-       $this->baseUri = sprintf("/%s/%s/%s", $this->params['module'], $this->params['controller'], $this->params['action']);
        $this->itemsCount = 0;
        $this->numPages = 1;
        $this->hasPages = false;
@@ -94,7 +90,7 @@ class WeDo_Pages_Paginator {
     public function getLink($pos)
     {
         $link = array($this->baseUri);
-        
+        $addPage = true;
         foreach($this->params as $k => $v)
         {
             switch($k)
@@ -106,12 +102,14 @@ class WeDo_Pages_Paginator {
                     break;
                 case self::REQUEST_PARAM_PAG:
                     $link[] = sprintf("%s/%s", self::REQUEST_PARAM_PAG, $pos);
+                    $addPage = false;
                     break;
                 default:
                     $link[] = sprintf("%s/%s", $k, $v);
                     break;
             }
-        }   
+        }
+        if($addPage) $link[] = "pag/$pos";
         return implode("/", $link);
     }
     

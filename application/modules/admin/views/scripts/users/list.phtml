@@ -16,7 +16,7 @@
             <tbody>
                 <?php foreach($this->entries as $entry) : ?>
                 <tr>
-                    <td><input type="checkbox" value="<?php echo $entry->getId() ?>"/></td>
+                    <td><input type="checkbox" class="list" value="<?php echo $entry->getId() ?>"/></td>
                     <td><a href="#"><?php echo $entry->getUsername() ?></a></td>
                     <td><a href="#"><?php echo $entry->getRole() ?></a></td>
                     <td class="actions">
@@ -31,12 +31,8 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <div class="left input">
-            <select name="action" id="tableaction">
-                <option value="">Action</option>
-                <option value="delete">Delete</option>
-            </select>
-        </div>
+        <?php echo $this->partial('common/actions.phtml', array('actions' => $this->actions)) ?>
+        
         <?php echo $this->partial('common/pagination.phtml',  array('paginator' => $this->paginator)) ?>
     </div>
 </div>

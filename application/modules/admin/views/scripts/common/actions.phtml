@@ -1,0 +1,8 @@
+<div class="left input">
+    <select name="action" id="tableaction">
+        <option value="">Action</option>
+        <?php foreach($this->actions->list as $action => $label) 
+            echo sprintf('<option value="%s">%s</option>', $action, $label);
+        ?>
+    </select>
+</div>
