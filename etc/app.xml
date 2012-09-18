@@ -16,21 +16,6 @@
                         </upon_connection>
                     </params>
                 </connection>
-                <connection type="database" adapter="mysql" connection_name='other_connection' default='N' persistent='N'>
-                    <uri>localhost/Devel2</uri>
-                    <login>Devel2</login>
-                    <password>Devel2</password>
-                    <params>
-                        <param name="upon_connection"><![CDATA[SET NAMES 'utf8']]>
-                        </param>
-                    </params>
-                </connection>
-                <connection type="database" adapter="mongo" connection_name='mongo' default='N' persistent='Y'>
-                    <uri>flame.mongohq.com:27069/fit2me</uri>
-                    <login>fit2me</login>
-                    <password>fit2me</password>
-                    <params/>
-                </connection>
                 <connection type="email" adapter="imap" connection_name='my_gmail' default='N' persistent='N'>
                     <host>imap.gmail.com</host>
                     <port>993</port>

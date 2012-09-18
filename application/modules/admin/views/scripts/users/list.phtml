@@ -1,0 +1,58 @@
+<h1><img src="/img/admin/icons/users.png" alt="" /> <?php echo $this->currenPageName ?></h1>
+<div class="bloc">
+    <div class="title">
+        Table Content
+    </div>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" class="checkall"/></th>
+                    <th>Username</th>
+                    <th>Ruolo</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->entries as $entry) : ?>
+                <tr>
+                    <td><input type="checkbox" value="<?php echo $entry->getId() ?>"/></td>
+                    <td><a href="#"><?php echo $entry->getUsername() ?></a></td>
+                    <td><a href="#"><?php echo $entry->getRole() ?></a></td>
+                    <td class="actions">
+                        <a href="#" title="Edit this content">
+                            <img src="/img/admin/icons/actions/edit.png" alt="" />
+                        </a>
+                        <a href="#" title="Delete this content">
+                            <img src="/img/admin/icons/actions/delete.png" alt="" />
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="left input">
+            <select name="action" id="tableaction">
+                <option value="">Action</option>
+                <option value="delete">Delete</option>
+            </select>
+        </div>
+        <?php if($this->paginator->hasPages):  ?>
+        <div class="pagination">
+            <?php if($this->paginator->curPage >1) : ?>
+                <a href="#" class="prev">&laquo;</a>
+            <?php endif; ?>
+            <?php 
+            for($i = 1; $i <= $this->paginator->numPages; $i++)
+            {
+                $class= ($i== $this->paginator->curPage) ? 'class="current"' : '';
+                echo sprintf('<a href="pag/%d" %s>%d</a>', $i, $class, $i);
+            } 
+            ?>
+            <?php if($this->paginator->curPage < $this->paginator->numPages) : ?>
+                <a href="#" class="prev">&raquo;</a>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>

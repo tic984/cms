@@ -36,7 +36,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                 ->appendFile("/js/admin/iphone-style-checkboxes.js")
                 ->appendFile("/js/admin/jquery.uniform.js")
                 ->appendFile("/js/admin/cookie/jquery.cookie.js")
-                ->appendFile("/js/admin/tooltipsy.min.js");
+                ->appendFile("/js/admin/tooltipsy.min.js")
+                ->appendFile("/js/admin/visualize.jQuery.js");
     }
 
     protected function _initNavigation() {
@@ -61,73 +62,78 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         WeDo_Application::runFor('backend');
     }
 
-    /*
-      protected function _initControllers() {
-      $front = Zend_Controller_Front::getInstance();
-      $front->setControllerDirectory(
-      array(
-      'default' => APPLICATION_PATH . '/modules/core/default/controllers',
-      'admin' => APPLICATION_PATH . '/modules/core/admin/controllers',
-      'library' => APPLICATION_PATH . '/modules/core/library/controllers',
-      'pages' => APPLICATION_PATH . '/modules/local/pages/controllers',
-      'clubs' => APPLICATION_PATH . '/modules/local/clubs/controllers'
-      )
-      );
-      }
+    protected function _initControllers() {
+        $front = Zend_Controller_Front::getInstance();
+        $front->setControllerDirectory(
+                array(
+                    'default' => APPLICATION_PATH . '/modules/default/controllers',
+                    'admin' => APPLICATION_PATH . '/modules/admin/controllers',   
+                )
+        );
+    }
 
+    /*
       protected function _initShantyMongo() {
       $connection = new Shanty_Mongo_Connection('mongodb://fit2me:fit2me@flame.mongohq.com:27069/fit2me');
       Shanty_Mongo::addMaster($connection);
       }
-
-      protected function _initRoutes() {
-
-      $frontController = Zend_Controller_Front::getInstance();
-      $frontController->registerPlugin(new WeDo_Plugins_Auth_Check());
-      $router = $frontController->getRouter();
-      //if no user is logged, forwards to login, else forwards to dash
-      $routeAdmin = new Zend_Controller_Router_Route(
-      '/admin',
-      array(
-      'module' => 'admin',
-      'controller' => 'index',
-      'action' => 'index'
-      )
-      );
-
-      $routeLogin = new Zend_Controller_Router_Route(
-      '/admin/login',
-      array(
-      'module' => 'default',
-      'controller' => 'login',
-      'action' => 'login'
-      )
-      );
-
-      $routeDefault = new Zend_Controller_Router_Route(
-      '/admin/:controller',
-      array(
-      'module' => 'admin',
-      'action' => 'index'
-      )
-      );
-
-      $routeModules = new Zend_Controller_Router_Route(
-      '/admin/:module/:controller/:action/*',
-      array(
-      'action' => 'index',
-      'module' => 'pages',
-      )
-      );
-
-
-
-
-      $router->addRoute('admin', $routeAdmin)
-      ->addRoute('login', $routeLogin)
-      ->addRoute('modules', $routeModules)
-      ->addRoute('default', $routeDefault);
-      }
      */
+
+    protected function _initRoutes() {
+
+        $frontController = Zend_Controller_Front::getInstance();
+        $frontController->registerPlugin(new WeDo_Plugins_Auth_Check());
+        $router = $frontController->getRouter();
+        //if no user is logged, forwards to login, else forwards to dash
+        $routeAdmin = new Zend_Controller_Router_Route(
+                        '/admin',
+                        array(
+                            'module' => 'admin',
+                            'controller' => 'index',
+                            'action' => 'index'
+                        )
+        );
+
+        $routeLogin = new Zend_Controller_Router_Route(
+                        '/admin/login',
+                        array(
+                            'module' => 'admin',
+                            'controller' => 'index',
+                            'action' => 'index'
+                        )
+        );
+
+        $routeDefault = new Zend_Controller_Router_Route(
+                        '/admin/:controller',
+                        array(
+                            'module' => 'admin',
+                            'action' => 'index'
+                        )
+        );
+
+        $routeModules = new Zend_Controller_Router_Route(
+                        '/admin/:controller/:action',
+                        array(
+                            'module' => 'admin',
+                        )
+        );
+        
+        $routeContents = new Zend_Controller_Router_Route(
+                        '/admin/contents/:module/:controller/:action/*',
+                        array(
+                            'module' => 'admin',
+                        )
+        );
+
+
+
+
+        $router->addRoute('admin', $routeAdmin)
+                ->addRoute('login', $routeLogin)
+                ->addRoute('modules', $routeModules);
+        //        ->addRoute('default', $routeDefault);
+        ;
+    }
+
 }
 

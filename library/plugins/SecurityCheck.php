@@ -22,12 +22,12 @@ class Plugins_SecurityCheck extends Zend_Controller_Plugin_Abstract
         {
             case 'login':
             case 'default':
-                if ($this->_controller == 'error')
-                {
-                    $this->_request->setModuleName('login');
-                    $this->_request->setControllerName('index');
-                    $this->_request->setActionName('index');
-                }
+//                if ($this->_controller == 'error')
+//                {
+//                    $this->_request->setModuleName('login');
+//                    $this->_request->setControllerName('index');
+//                    $this->_request->setActionName('index');
+//                }
                 break;
             default:
                 $this->_checkIdentity();
@@ -38,12 +38,12 @@ class Plugins_SecurityCheck extends Zend_Controller_Plugin_Abstract
     private function _checkIdentity()
     {
         $auth = Zend_Auth::getInstance();
-        if (!$auth->hasIdentity())
-        {
-            $this->_request->setModuleName('login');
-            $this->_request->setControllerName('index');
-            $this->_request->setActionName('index');
-        }
+//        if (!$auth->hasIdentity())
+//        {
+//            $this->_request->setModuleName('login');
+//            $this->_request->setControllerName('index');
+//            $this->_request->setActionName('index');
+//        }
     }
 
 }

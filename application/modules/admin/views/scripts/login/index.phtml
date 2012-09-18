@@ -1,0 +1,29 @@
+<div id="content" class="login">
+
+    <h1><img src="admin/img/icons/lock-closed.png" alt="" />Admin panel</h1>
+
+<!--
+    <div class="notif tip">
+        No password needed just submit the form
+        <a href="#" class="close"></a>
+    </div>
+-->
+
+    <form action="<?php echo $this->form->getAction() ?>" method="<?php echo $this->form->getMethod() ?>">
+
+        
+            <?php echo $this->form->username ?>
+       
+            <?php echo $this->form->password ?>
+        
+        <div class="checkbox">
+            <input type="checkbox" id="remember"/>
+            <label class="inline" for="remember">Remember me</label>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Login me in"/>
+        </div>
+    </form>
+
+
+</div>

@@ -3,25 +3,35 @@
     <nav>
         <app>
             <label>System</label>
-            <uri>#</uri>    
+            <uri>#</uri>
             <pages>
+                <dashboard>
+                <label>Dashboard</label>
+                <module>admin</module>
+                <controller>dash</controller>
+                <action>index</action>
+                 </dashboard>
                 <profile>
                     <label>Stats</label>
+                    <module>admin</module>
                     <controller>stats</controller>
-                    <action>dash</action>
+                    <action>index</action>
                 </profile>
                 <users>
-                    <label>Admins</label>
+                    <label>Users</label>
+                    <module>admin</module>
                     <controller>users</controller>
                     <action>list</action>
                 </users> 
                 <problems>
                     <label>Report a problem</label>
+                    <module>admin</module>
                     <controller>reports</controller>
                     <action>list</action>
                 </problems>
                 <requests>
                     <label>Incoming Emails</label>
+                    <module>admin</module>
                     <controller>requests</controller>
                     <action>list</action>
                 </requests> 
